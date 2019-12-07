@@ -1,0 +1,27 @@
+{
+  "name": "jira-action",
+  "version": "1.0.0",
+  "description": "Automate JIRA Transitions",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint index.js",
+    "build": "ncc build index.js -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OSFGlobal/jira-action.git"
+  },
+  "author": "Yuriy Boev <yuriy.boev@osf-commerce.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/OSFGlobal/jira-action/issues"
+  },
+  "homepage": "https://github.com/OSFGlobal/jira-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.20.5",
+    "eslint": "^6.7.2"
+  }
+}
