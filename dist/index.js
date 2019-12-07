@@ -55,12 +55,11 @@ module.exports = require("os");
 
 const core = __webpack_require__(470);
 
-
-// most @actions toolkit packages have async methods
 async function run() {
     try {
         const ms = core.getInput('milliseconds');
-        console.log(`Waiting ${ms} milliseconds ...`);
+        console.log(`Waiting ${ms} milliseconds...`);
+        console.log($GITHUB_EVENT_PATH);
 
         core.debug((new Date()).toTimeString());
 
