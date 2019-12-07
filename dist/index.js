@@ -53,13 +53,16 @@ module.exports = require("os");
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
+const github = __webpack_require__(690);
 const core = __webpack_require__(470);
 
 async function run() {
     try {
         const ms = core.getInput('milliseconds');
         console.log(`Waiting ${ms} milliseconds...`);
-        console.log($GITHUB_EVENT_PATH);
+
+        const context = github.context;
+        console.log(context);
 
         core.debug((new Date()).toTimeString());
 
@@ -354,6 +357,14 @@ exports.getState = getState;
 /***/ (function(module) {
 
 module.exports = require("path");
+
+/***/ }),
+
+/***/ 690:
+/***/ (function() {
+
+eval("require")("@actions/github");
+
 
 /***/ })
 

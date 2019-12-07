@@ -1,10 +1,13 @@
+const github = require('@actions/github');
 const core = require('@actions/core');
 
 async function run() {
     try {
         const ms = core.getInput('milliseconds');
         console.log(`Waiting ${ms} milliseconds...`);
-        console.log($GITHUB_EVENT_PATH);
+
+        const context = github.context;
+        console.log(context);
 
         core.debug((new Date()).toTimeString());
 
