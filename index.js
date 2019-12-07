@@ -3,7 +3,8 @@ const core = require('@actions/core');
 async function run() {
     try {
         const ms = core.getInput('milliseconds');
-        console.log(`Waiting ${ms} milliseconds ...`);
+        console.log(`Waiting ${ms} milliseconds...`);
+        console.log($GITHUB_EVENT_PATH);
 
         core.debug((new Date()).toTimeString());
 
