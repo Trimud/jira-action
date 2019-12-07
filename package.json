@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/OSFGlobal/jira-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",
