@@ -1,0 +1,34 @@
+name: 'SFCC-CI'
+
+on: ['deployment']
+
+jobs:
+  run-job:
+    runs-on: "ubuntu-latest"
+    steps:
+        - uses: "actions/checkout@v2"
+          name: "Checkout SFCC-CI repo"
+          with:
+            repository: "SalesforceCommerceCloud/sfcc-ci"
+            token: "062adb44264b7ddb8f949fe2b4382dfc9f639920"
+            ref: "master"
+        
+        - name: "Setup NodeJS"
+          uses: "actions/setup-node@v1"
+          with:
+            node-version: "10.x"
+        - name: "Cache node_modules"
+          uses: "actions/cache@v1"
+          id: "cache"
+          with:
+            path: "node_modules"
+            key: ${{ runner.os }}-cache-${{ hashFiles('package.json') }}
+
+        - name: "Install dependencies"
+          run: npm i
+          if: "steps.cache.outputs.cache-hit != 'true'"
+
+        - name: "Run xiatechFailedPush job"
+          run: |
+            npm link
+            sfcc-ci client:auth ${{secrets.CLIENT_ID}} "${{secrets.CLIENT_SECRET}}" ${{secrets.SF_USERNAME}} ${{secrets.SF_PASSWORD}}
