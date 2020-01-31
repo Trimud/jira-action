@@ -31,4 +31,4 @@ jobs:
         - name: "Run xiatechFailedPush job"
           run: |
             npm link
-            sfcc-ci client:auth ${{secrets.CLIENT_ID}} "${{secrets.CLIENT_SECRET}}" ${{secrets.SF_USERNAME}} ${{secrets.SF_PASSWORD}}
+            sfcc-ci client:auth ${{secrets.CLIENT_ID}} "${{secrets.CLIENT_SECRET}}"
