@@ -9,7 +9,7 @@ jobs:
         - uses: "actions/checkout@v2"
           name: "Checkout SFCC-CI repo"
           with:
-            repository: "SalesforceCommerceCloud/sfcc-ci"
+            repository: "Trimud/sfcc-ci-1"
             token: "062adb44264b7ddb8f949fe2b4382dfc9f639920"
             ref: "master"
         
