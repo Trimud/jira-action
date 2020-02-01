@@ -28,7 +28,7 @@ jobs:
           run: npm i
           if: "steps.cache.outputs.cache-hit != 'true'"
 
-        - name: "Run xiatechFailedPush job"
+        - name: "Run sfcc-ci"
           run: |
             npm link
             sfcc-ci client:auth ${{secrets.CLIENT_ID}} "${{secrets.CLIENT_SECRET}}" ${{secrets.SF_USERNAME}} ${{secrets.SF_PASSWORD}}
