@@ -9,8 +9,8 @@ jobs:
         - uses: "actions/checkout@v2"
           name: "Checkout SFCC-CI repo"
           with:
-            repository: "Trimud/sfcc-ci-1"
-            token: "062adb44264b7ddb8f949fe2b4382dfc9f639920"
+            repository: "Trimud/sfcc-ci-public"
+            token: ${{secrets.GITHUB_PAT}}
             ref: "master"
         
         - name: "Setup NodeJS"
