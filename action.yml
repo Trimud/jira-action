@@ -5,6 +5,10 @@ inputs:
     description: 'JSON with all active sandboxes'
     required: true
     default: '[]'
+  token:
+    description: 'Auth token'
+    required: true
+    default: ''
   sf_username:
     description: 'Salesforce Username'
     required: true

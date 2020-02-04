@@ -3431,12 +3431,15 @@ async function run() {
         const sf_password = core.getInput('sf_password');
         const client_id = core.getInput('client_id');
         const client_password = core.getInput('client_password');
+        const token = core.getInput('token');
         // const client_id = 'afdc5fa0-9b39-4ab9-9587-b7855f86258a';
         // const client_password = 'JowuWKT#$Fdq';
-
+        console.log(token);
         console.log(`SB data: ${sb}`);
 
-        await exec.exec('sfcc-ci client:auth -D', [client_id, client_password, sf_username, sf_password]);
+        await exec.exec('sh', ['-c', 'echo', token]);
+        await exec.exec('sfcc-ci sandbox:stop -s', ['1ca53a85-8d7a-4982-b2ac-f8fa993a4a7d']);
+        // await exec.exec('sfcc-ci client:auth -D', [client_id, client_password, sf_username, sf_password]);
         // sfcc.auth.auth(client_id, client_password, (err, token) => {
         //     if (token) {
         //         console.log('Authentication succeeded. Token is %s', token);
