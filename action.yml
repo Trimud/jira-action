@@ -5,26 +5,6 @@ inputs:
     description: 'JSON with all active sandboxes'
     required: true
     default: '[]'
-  token:
-    description: 'Auth token'
-    required: true
-    default: ''
-  sf_username:
-    description: 'Salesforce Username'
-    required: true
-    default: ''
-  sf_password:
-    description: 'Salesforce Password'
-    required: true
-    default: ''
-  client_id:
-    description: 'OCAPI Client ID'
-    required: true
-    default: ''
-  client_password:
-    description: 'OCAPI Client Password'
-    required: true
-    default: ''
 outputs:
   message:
     description: 'The message to output'
