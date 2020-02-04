@@ -3437,7 +3437,7 @@ async function run() {
         console.log(`SB data: ${sb}`);
 
         // await exec.exec('sfcc-ci client:auth -D', [client_id, client_password, sf_username, sf_password]);
-        sfcc.auth.auth('afdc5fa0-9b39-4ab9-9587-b7855f86258a', 'JowuWKT#$Fdq', (err, token) => {
+        sfcc.auth.auth(client_id, client_password, (err, token) => {
             console.log(token);
             if (token) {
                 console.log('Authentication succeeded. Token is %s', token);
