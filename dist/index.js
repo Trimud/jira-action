@@ -950,19 +950,19 @@ const exec = __webpack_require__(986);
 async function run() {
     try {
         const sandboxes = core.getInput('sandboxes');
-        console.log(`SB data: ${sandboxes}`);
 
+        console.log('Sandb. count: '+sandboxes.length);
         if (sandboxes !== undefined && sandboxes.length > 0) {
-            for (const sandbox of sandboxes) {
+            for (let sandbox of sandboxes) {
                 if (sandbox.state === 'started') {
                     await exec.exec('sfcc-ci sandbox:stop -s', [sandbox.id]);
-                } else {
+                } else if (sandbox.state !== 'undefined') {
                     console.log(`Sandbox ${sandbox.id} is in ${sandbox.state} state`);
                 }
             }
         }
 
-        core.setOutput('message', 'Finished');
+        // core.setOutput('message', 'Finished');
     }
     catch (error) {
         core.setFailed(error.message);
