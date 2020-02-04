@@ -2541,8 +2541,8 @@ async function run() {
         const sb = core.getInput('sandboxes');
         const sf_username = core.getInput('sf_username');
         const sf_password = core.getInput('sf_password');
-        const client_id = core.getInput('client_id').toString();
-        const client_password = core.getInput('client_password').toString();
+        const client_id = core.getInput('client_id');
+        const client_password = core.getInput('client_password');
 
         console.log(`SB data: ${sb}`);
         console.log(sf_username);
@@ -2550,7 +2550,7 @@ async function run() {
         console.log(client_id);
         console.log(client_password);
 
-        sfcc.auth.auth(client_id, client_password, (err, token) => {
+        sfcc.auth.auth(client_id, `${client_password}`, (err, token) => {
             console.log(token);
             if (token) {
                 console.log('Authentication succeeded. Token is %s', token);
