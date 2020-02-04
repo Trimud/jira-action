@@ -3435,10 +3435,10 @@ async function run() {
         const client_password = 'JowuWKT#$Fdq';
 
         console.log(`SB data: ${sb}`);
-        console.log(sf_username);
-        console.log(sf_password);
-        console.log(client_id);
-        console.log(client_password);
+        console.log(typeof sf_username);
+        console.log(typeof sf_password);
+        console.log(typeof client_id);
+        console.log(typeof client_password);
 
         await exec.exec("sfcc-ci client:auth 'afdc5fa0-9b39-4ab9-9587-b7855f86258a' 'JowuWKT#$Fdq' sf_username sf_password");
 
