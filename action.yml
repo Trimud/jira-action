@@ -1,12 +1,28 @@
-name: 'Wait'
+name: 'Manage On-Demand Sandboxes'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  sandboxes:  # id of input
-    description: 'list:sandboxes json'
+  sandboxes:
+    description: 'JSON with all active sandboxes'
     required: true
     default: '[]'
+  sf_username:
+    description: 'Salesforce Username'
+    required: true
+    default: ''
+  sf_password:
+    description: 'Salesforce Password'
+    required: true
+    default: ''
+  client_id:
+    description: 'OCAPI Client ID'
+    required: true
+    default: ''
+  client_password:
+    description: 'OCAPI Client Password'
+    required: true
+    default: ''
 outputs:
-  time: # output will be available to future steps
+  message:
     description: 'The message to output'
 runs:
   using: 'node12'
