@@ -958,7 +958,8 @@ async function run() {
                 } else {
                     console.log(`Sandbox ${sandbox.id} is in ${sandbox.state} state`);
                 }
-                await exec.exec('sfcc-ci sandbox:delete -N -s', [sandbox.id]);
+                // Delete all sandboxes
+                // await exec.exec('sfcc-ci sandbox:delete -N -s', [sandbox.id]);
             }
         }
 
