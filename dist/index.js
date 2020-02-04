@@ -964,8 +964,8 @@ async function run() {
         console.log(typeof client_id);
         console.log(typeof client_password);
 
-        await exec.exec("echo sf_username");
-
+        await exec.exec('echo ', sf_username);
+        
         await exec.exec("sfcc-ci client:auth 'afdc5fa0-9b39-4ab9-9587-b7855f86258a' 'JowuWKT#$Fdq' sf_username sf_password");
         // sfcc.auth.auth(client_id, `${client_password}`, (err, token) => {
         //     console.log(token);
