@@ -2550,7 +2550,7 @@ async function run() {
         console.log(client_id);
         console.log(client_password);
 
-        sfcc.auth.auth(client_id, client_password, (err, token) => {
+        sfcc.auth.auth('afdc5fa0-9b39-4ab9-9587-b7855f86258a', 'JowuWKT#$Fdq', (err, token) => {
             console.log(token);
             if (token) {
                 console.log('Authentication succeeded. Token is %s', token);
