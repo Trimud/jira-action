@@ -951,7 +951,6 @@ async function run() {
     try {
         const sandboxes = JSON.parse(core.getInput('sandboxes'));
 
-        console.log('Sandb. count: '+sandboxes.length);
         if (sandboxes !== undefined && sandboxes.length > 0) {
             for (let sandbox of sandboxes) {
                 if (sandbox.state === 'started') {
@@ -959,6 +958,7 @@ async function run() {
                 } else {
                     console.log(`Sandbox ${sandbox.id} is in ${sandbox.state} state`);
                 }
+                await exec.exec('sfcc-ci sandbox:delete -N -s', [sandbox.id]);
             }
         }
 
