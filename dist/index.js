@@ -3440,7 +3440,7 @@ async function run() {
         console.log(client_id);
         console.log(client_password);
 
-        await exec.exec("sfcc-ci client:auth ${{secrets.YB_CLIENT_ID}} '${{secrets.YB_CLIENT_PASSWORD}}' ${{secrets.OD_SF_USER}} '${{secrets.OD_SF_PASSWORD}}'");
+        await exec.exec("sfcc-ci client:auth client_id client_password sf_username sf_password");
 
         // sfcc.auth.auth(client_id, `${client_password}`, (err, token) => {
         //     console.log(token);
