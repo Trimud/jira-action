@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js",
-    "build": "ncc build index.js -o dist",
-    "watch": "nodemon ncc build index.js -o dist"
+    "build": "ncc build index.js -o dist"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,6 @@
   },
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",
-    "eslint": "^6.7.2",
-    "nodemon": "^2.0.2"
+    "eslint": "^6.7.2"
   }
 }
