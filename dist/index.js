@@ -959,34 +959,23 @@ async function run() {
                         if (sandbox.state === 'started') {
                             await exec.exec('sfcc-ci sandbox:stop -s', [sandbox.id]);
                         }
-
                         break;
                     case 'start':
                         if (sandbox.state === 'stopped') {
-                            const sandboxStart = await exec.exec('sfcc-ci sandbox:start -s', [sandbox.id]);
-                            sandboxStart.then(
-                                await exec.exec('sfcc-ci sandbox:list')
-                            ).error(
-                                console.log(`Error starting sandbox with id ${sandbox.id}`)
-                            );
+                            await exec.exec('sfcc-ci sandbox:start -s', [sandbox.id]);
                         }
-
                         break;
                     case 'delete':
                         await exec.exec('sfcc-ci sandbox:delete -N -s', [sandbox.id]);
-
                         break;
                     case 'restart':
                         await exec.exec('sfcc-ci sandbox:restart -s', [sandbox.id]);
-
                         break;
                     case 'reset':
                         await exec.exec('sfcc-ci sandbox:reset -N -s', [sandbox.id]);
-
                         break;
                     default:
                         await exec.exec(`sfcc-ci sandbox:${event} -s`, [sandbox.id]);
-
                         break;
                 }
             }
