@@ -951,41 +951,29 @@ async function run() {
     try {
         const sandboxes = JSON.parse(core.getInput('sandboxes'));
         const event = core.getInput('event');
-        const allowedEvents = ['start', 'stop', 'create', 'delete', 'restart', 'reset'];
+        const allowedEvents = ['start', 'stop', 'create', 'delete', 'restart', 'reset', 'list'];
 
         // Check if incoming event is allowed,
         // throw an error and exit this action
         if (allowedEvents.includes(event) === false) {
-            core.setFailed('Not a valid event input. Expected one of the following: start | stop | create | delete | restart | reset');
+            core.setFailed('Not a valid event input. Expected one of the following: start | stop | create | delete | restart | reset | list');
         }
 
         if (sandboxes !== undefined && sandboxes.length > 0) {
             // Loop through all sandboxes returned by previous action step
             for (let sandbox of sandboxes) {
                 switch (event) {
-                    case 'create':
-                        await exec.exec('sfcc-ci sandbox:create -r zzrb -t 12 -s');
-                        break;
                     case 'delete':
                         await exec.exec('sfcc-ci sandbox:delete -N -s', [sandbox.id]);
-                        break;
-                    case 'restart':
-                        await exec.exec('sfcc-ci sandbox:restart -s', [sandbox.id]);
                         break;
                     case 'reset':
                         await exec.exec('sfcc-ci sandbox:reset -N -s', [sandbox.id]);
                         break;
-                    case 'stop':
-                        if (sandbox.state === 'started') {
-                            await exec.exec('sfcc-ci sandbox:stop -s', [sandbox.id]);
-                        }
-                        break;
-                    case 'start':
-                        if (sandbox.state === 'stopped') {
-                            await exec.exec('sfcc-ci sandbox:start -s', [sandbox.id]);
-                        }
+                    case 'list':
+                        await exec.exec('sfcc-ci sandbox:list -S state');
                         break;
                     default:
+                        await exec.exec(`sfcc-ci sandbox:${event} -N -s`, [sandbox.id]);
                         break;
                 }
             }
