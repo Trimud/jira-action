@@ -973,7 +973,7 @@ async function run() {
                         await exec.exec('sfcc-ci sandbox:list -S state');
                         break;
                     default:
-                        await exec.exec(`sfcc-ci sandbox:${event} -N -s`, [sandbox.id]);
+                        await exec.exec(`sfcc-ci sandbox:${event} -s`, [sandbox.id]);
                         break;
                 }
 
