@@ -1,5 +1,5 @@
-name: 'Manage On-Demand Sandboxes'
-description: 'Wait a designated number of milliseconds'
+name: 'SalesForce B2C On-Demand Sandboxes'
+description: 'Manage On-Demand Sandboxes'
 inputs:
   sandboxes:
     description: 'JSON with all active sandboxes'
