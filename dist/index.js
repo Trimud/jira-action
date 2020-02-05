@@ -976,6 +976,11 @@ async function run() {
                         await exec.exec(`sfcc-ci sandbox:${event} -N -s`, [sandbox.id]);
                         break;
                 }
+
+                // Exit loop as we need to list sandboxes status only once
+                if (event === 'list') {
+                    break;
+                }
             }
         }
     } catch (error) {
