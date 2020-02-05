@@ -1,32 +1,46 @@
-const github = require('@actions/github');
 const core = require('@actions/core');
-const sfcc = require('sfcc-ci');
+const exec = require('@actions/exec');
 
 async function run() {
     try {
-        const sb = core.getInput('sandboxes');
-        const sf_username = core.getInput('sf_username');
-        const sf_password = core.getInput('sf_password');
-        const client_id = core.getInput('client_id');
-        const client_password = core.getInput('client_password');
+        const sandboxes = JSON.parse(core.getInput('sandboxes'));
+        const event = JSON.parse(core.getInput('event'));
 
-        console.log(`SB data: ${sb}`);
+        if (sandboxes !== undefined && sandboxes.length > 0) {
+            for (let sandbox of sandboxes) {
+                switch (event) {
+                    case 'stop':
+                        if (sandbox.state === 'started') {
+                            await exec.exec('sfcc-ci sandbox:stop -s', [sandbox.id]);
+                        }
 
-        sfcc.auth.auth(client_id, client_password, (err, token) => {
-            if (token) {
-                console.log('Authentication succeeded. Token is %s', token);
+                        break;
+                    case 'start':
+                        if (sandbox.state === 'stopped') {
+                            await exec.exec('sfcc-ci sandbox:start -s', [sandbox.id]);
+                        }
+
+                        break;
+                    case 'delete':
+                        await exec.exec('sfcc-ci sandbox:delete -N -s', [sandbox.id]);
+
+                        break;
+                    case 'restart':
+                        await exec.exec('sfcc-ci sandbox:restart -s', [sandbox.id]);
+
+                        break;
+                    case 'reset':
+                        await exec.exec('sfcc-ci sandbox:reset -N -s', [sandbox.id]);
+
+                        break;
+                    default:
+                        await exec.exec(`sfcc-ci sandbox:${event} -s`, [sandbox.id]);
+
+                        break;
+                }
             }
-            if (err) {
-                console.error('Authentication error: %s', err);
-            }
-        });
-
-        // const context = github.context;
-        // console.log(context);
-
-        core.setOutput('message', 'Finished');
-    }
-    catch (error) {
+        }
+    } catch (error) {
         core.setFailed(error.message);
     }
 }

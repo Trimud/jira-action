@@ -5,6 +5,10 @@ inputs:
     description: 'JSON with all active sandboxes'
     required: true
     default: '[]'
+  event:
+    description: 'SFCC CI Sandbox event'
+    required: false
+    default: 'stop'
 outputs:
   message:
     description: 'The message to output'
