@@ -7,9 +7,9 @@ async function run() {
         const event = core.getInput('event');
         const allowedEvents = ['start', 'stop', 'create', 'delete', 'restart', 'reset'];
 
-        // Check if event is allowed and if not
+        // Check if incoming event is allowed,
         // throw an error and exit this action
-        if (!allowedEvents.includes(event)) {
+        if (allowedEvents.includes(event) === false) {
             core.setFailed('Not a valid event input. Expected one of the following: start | stop | create | delete | restart | reset');
         }
 
