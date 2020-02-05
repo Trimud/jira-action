@@ -950,7 +950,7 @@ const exec = __webpack_require__(986);
 async function run() {
     try {
         const sandboxes = JSON.parse(core.getInput('sandboxes'));
-        const event = JSON.parse(core.getInput('event'));
+        const event = core.getInput('event');
 
         if (sandboxes !== undefined && sandboxes.length > 0) {
             for (let sandbox of sandboxes) {
