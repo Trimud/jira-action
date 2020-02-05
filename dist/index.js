@@ -975,7 +975,7 @@ async function run() {
                         await exec.exec('sfcc-ci sandbox:reset -N -s', [sandbox.id]);
                         break;
                     default:
-                        await exec.exec(`sfcc-ci sandbox:${event} -s`, [sandbox.id]);
+                        core.setFailed('Not a valid event input. Expected one of the following: start | stop | delete | restart | reset');
                         break;
                 }
             }
