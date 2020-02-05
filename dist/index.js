@@ -955,7 +955,7 @@ async function run() {
 
         // Check if event is allowed and if not
         // throw an error and exit this action
-        if (allowedEvents.includes(event)) {
+        if (!allowedEvents.includes(event)) {
             core.setFailed('Not a valid event input. Expected one of the following: start | stop | delete | restart | reset');
         }
 
