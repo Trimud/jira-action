@@ -20,8 +20,7 @@
   "dependencies": {
     "@actions/core": "^1.2.0",
     "@actions/exec": "^1.0.3",
-    "@actions/github": "^1.1.0",
-    "sfcc-ci": "git+https://6683df141b64449d9a92eef474f7bbbf360fb6c2:x-oauth-basic@github.com/OSFGlobal/sfcc-ci.git"
+    "@actions/github": "^1.1.0"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",

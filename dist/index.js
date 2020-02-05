@@ -951,12 +951,12 @@ async function run() {
     try {
         const sandboxes = JSON.parse(core.getInput('sandboxes'));
         const event = core.getInput('event');
-        const allowedEvents = ['start', 'stop', 'delete', 'restart', 'reset', 'create'];
+        const allowedEvents = ['start', 'stop', 'create', 'delete', 'restart', 'reset'];
 
         // Check if event is allowed and if not
         // throw an error and exit this action
         if (!allowedEvents.includes(event)) {
-            core.setFailed('Not a valid event input. Expected one of the following: start | stop | delete | restart | reset');
+            core.setFailed('Not a valid event input. Expected one of the following: start | stop | create | delete | restart | reset');
         }
 
         if (sandboxes !== undefined && sandboxes.length > 0) {
