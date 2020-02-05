@@ -963,7 +963,12 @@ async function run() {
                         break;
                     case 'start':
                         if (sandbox.state === 'stopped') {
-                            await exec.exec('sfcc-ci sandbox:start -s', [sandbox.id]);
+                            const sandboxStart = await exec.exec('sfcc-ci sandbox:start -s', [sandbox.id]);
+                            sandboxStart.then(
+                                await exec.exec('sfcc-ci sandbox:list')
+                            ).error(
+                                console.log(`Error starting sandbox with id ${sandbox.id}`)
+                            );
                         }
 
                         break;
